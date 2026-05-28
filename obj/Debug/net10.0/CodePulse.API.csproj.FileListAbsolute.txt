@@ -158,7 +158,6 @@ E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\refint\Code
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\CodePulse.API.pdb
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\CodePulse.API.genruntimeconfig.cache
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\ref\CodePulse.API.dll
-E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\Google.Apis.dll
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\Google.Apis.Auth.dll
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\Google.Apis.Core.dll
@@ -166,3 +165,4 @@ E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\Google.GenA
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\Microsoft.Extensions.AI.Abstractions.dll
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\System.Management.dll
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Management.dll
+E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\CodePulse.API.sourcelink.json
