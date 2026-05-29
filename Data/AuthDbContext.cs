@@ -15,8 +15,8 @@ namespace CodePulse.API.Data
         {
             base.OnModelCreating(builder);
 
-            var readerRoleId = "cff7c87a-48c5-4967-a51f-6402cf408546";
-            var writerRoleId = "37c35ff3-3d62-4dce-9eaa-ad3e278c7b4e";
+            var adminRoleId = "cff7c87a-48c5-4967-a51f-6402cf408546";
+            //var writerRoleId = "37c35ff3-3d62-4dce-9eaa-ad3e278c7b4e";
 
 
             // Create reader and writter role
@@ -24,18 +24,18 @@ namespace CodePulse.API.Data
             {
                 new IdentityRole()
                 {
-                    Id = readerRoleId,
-                    Name = "Reader",
-                    NormalizedName = "Reader".ToUpper(),
-                    ConcurrencyStamp = readerRoleId
+                    Id = adminRoleId,
+                    Name = "Admin",
+                    NormalizedName = "Admin".ToUpper(),
+                    ConcurrencyStamp = adminRoleId
                 },
-                new IdentityRole()
-                {
-                    Id = writerRoleId,
-                    Name = "Writer",
-                    NormalizedName = "Writer".ToUpper(),
-                    ConcurrencyStamp = writerRoleId
-                }
+                //new IdentityRole()
+                //{
+                //    Id = writerRoleId,
+                //    Name = "Writer",
+                //    NormalizedName = "Writer".ToUpper(),
+                //    ConcurrencyStamp = writerRoleId
+                //}
             };
 
             // Seed the roles
@@ -65,13 +65,13 @@ namespace CodePulse.API.Data
                 new()
                 {
                     UserId = adminUserId,
-                    RoleId = readerRoleId
+                    RoleId = adminRoleId
                 },
-                new()
-                {
-                    UserId = adminUserId,
-                    RoleId = writerRoleId
-                }
+                //new()
+                //{
+                //    UserId = adminUserId,
+                //    RoleId = adminRoleId
+                //}
             };
 
             builder.Entity<IdentityUserRole<string>>().HasData(adminRoles);

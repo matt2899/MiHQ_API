@@ -166,3 +166,4 @@ E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\Microsoft.E
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\System.Management.dll
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Management.dll
 E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\CodePulse.API.sourcelink.json
+E:\Udemy\CodePulse\API\CodePulse.API\CodePulse.API\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
