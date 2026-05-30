@@ -80,8 +80,8 @@ namespace CodePulse.API.Controllers
 
             if (identityResult.Succeeded)
             {
-                // Add Role to user (Reader)
-                identityResult = await userManager.AddToRoleAsync(user, "Reader");
+                // Add Role to user (User)
+                identityResult = await userManager.AddToRoleAsync(user, "User");
 
                 if (identityResult.Succeeded)
                 {
