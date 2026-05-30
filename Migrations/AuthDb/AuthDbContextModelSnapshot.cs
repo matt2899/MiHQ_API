@@ -53,8 +53,15 @@ namespace CodePulse.API.Migrations.AuthDb
                         {
                             Id = "cff7c87a-48c5-4967-a51f-6402cf408546",
                             ConcurrencyStamp = "cff7c87a-48c5-4967-a51f-6402cf408546",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Name = "Reader",
+                            NormalizedName = "READER"
+                        },
+                        new
+                        {
+                            Id = "37c35ff3-3d62-4dce-9eaa-ad3e278c7b4e",
+                            ConcurrencyStamp = "37c35ff3-3d62-4dce-9eaa-ad3e278c7b4e",
+                            Name = "Writer",
+                            NormalizedName = "WRITER"
                         });
                 });
 
@@ -232,6 +239,11 @@ namespace CodePulse.API.Migrations.AuthDb
                         {
                             UserId = "836ece39-23c0-4dbe-a56a-b02ea446200f",
                             RoleId = "cff7c87a-48c5-4967-a51f-6402cf408546"
+                        },
+                        new
+                        {
+                            UserId = "836ece39-23c0-4dbe-a56a-b02ea446200f",
+                            RoleId = "37c35ff3-3d62-4dce-9eaa-ad3e278c7b4e"
                         });
                 });
 
