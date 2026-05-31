@@ -1,4 +1,5 @@
-﻿using CodePulse.API.Models.DTO;
+﻿using CodePulse.API.Models.Domain;
+using CodePulse.API.Models.DTO;
 using CodePulse.API.Repositories.Interface;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -13,10 +14,10 @@ namespace CodePulse.API.Controllers
     public class AuthController : ControllerBase
     {
 
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<ApplicationUser> userManager;
         private readonly ITokenRepository tokenRepository;
 
-        public AuthController(UserManager<IdentityUser> userManager, ITokenRepository tokenRepository)
+        public AuthController(UserManager<ApplicationUser> userManager, ITokenRepository tokenRepository)
         {
             this.userManager = userManager;
             this.tokenRepository = tokenRepository;
@@ -52,7 +53,7 @@ namespace CodePulse.API.Controllers
                     {
                         HttpOnly = true,
                         Secure = true,
-                        SameSite = SameSiteMode.Lax,
+                        SameSite = SameSiteMode.None,
                         Expires = DateTime.UtcNow.AddMinutes(15)
                     });
 
@@ -69,10 +70,13 @@ namespace CodePulse.API.Controllers
         public async Task<IActionResult> Register(RegisterRequestDto request)
         {
             // Create identity user object
-            var user = new IdentityUser
+            var user = new ApplicationUser
             {
                 UserName = request.Email?.Trim(),
-                Email = request.Email?.Trim()
+                Email = request.Email?.Trim(),
+                FullName = request?.FullName,
+                Bio = request?.Bio,
+                ProfileImageUrl= request?.ProfileImageUrl
             };
 
             // Create User

@@ -1,4 +1,5 @@
-﻿using CodePulse.API.Repositories.Interface;
+﻿using CodePulse.API.Models.Domain;
+using CodePulse.API.Repositories.Interface;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -15,11 +16,12 @@ namespace CodePulse.API.Repositories.Implementation
          this.configuration = configuration;   
         }
 
-        public string CreateJwtToken(IdentityUser user, List<string> roles)
+        public string CreateJwtToken(ApplicationUser user, List<string> roles)
         {
             // Create Claims
             var claims = new List<Claim>
             {
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email, user.Email)
             };
 
@@ -41,5 +43,7 @@ namespace CodePulse.API.Repositories.Implementation
             // Return Token
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+        
     }
 }

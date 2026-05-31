@@ -9,6 +9,7 @@
         public string FeaturedImageUrl { get; set; }
         public string UrlHandle { get; set; }
         public DateTime PublishedDate { get; set; }
+        public string AuthorId { get; set; }
         public string Author { get; set; }
         public bool IsVisible { get; set; }
         public List<CategoryDto> Categories { get; set; } = new List<CategoryDto>();

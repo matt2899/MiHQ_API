@@ -1,4 +1,5 @@
 using CodePulse.API.Data;
+using CodePulse.API.Models.Domain;
 using CodePulse.API.Repositories.Implementation;
 using CodePulse.API.Repositories.Interface;
 using CodePulse.API.Services.implementations;
@@ -20,11 +21,7 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CodePulseConnectionString"));
-});
-builder.Services.AddDbContext<AuthDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CodePulseConnectionString"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MiHQConnectionString"));
 });
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
@@ -32,10 +29,15 @@ builder.Services.AddScoped<IImageRepository, ImageRepository>();
 builder.Services.AddScoped<ITokenRepository, TokenRepository>();
 builder.Services.AddScoped<IGeminiService, GeminiService>();
 
-builder.Services.AddIdentityCore<IdentityUser>()
-    .AddRoles<IdentityRole>()
-    .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>("MiHQ")
-    .AddEntityFrameworkStores<AuthDbContext>()
+//builder.Services.AddIdentityCore<ApplicationUser>()
+//    .AddRoles<IdentityRole>()
+//    .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>("MiHQ")
+//    .AddEntityFrameworkStores<ApplicationDbContext>()
+//    .AddDefaultTokenProviders();
+
+builder.Services
+    .AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
 builder.Services.Configure<IdentityOptions>(options =>
@@ -68,12 +70,27 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             OnMessageReceived = context =>
             {
+
+                Console.WriteLine("AUTH HEADER:");
+                Console.WriteLine(context.Request.Headers.Authorization);
+
+                Console.WriteLine("COOKIE:");
+                Console.WriteLine(context.Request.Headers.Cookie);
+
                 if (context.Request.Cookies.TryGetValue("access-token", out var token))
                 {
                     context.Token = token;
                 }
                 return Task.CompletedTask;
-            }
+            },
+
+             OnAuthenticationFailed = context =>
+             {
+                 Console.WriteLine("AUTH FAILED:");
+                 Console.WriteLine(context.Exception.Message);
+
+                 return Task.CompletedTask;
+             }
         };
     });
 
@@ -107,8 +124,8 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.MapControllers();
 
-var hash = new PasswordHasher<IdentityUser>()
-    .HashPassword(new IdentityUser(), "Admin@123");
+var hash = new PasswordHasher<ApplicationUser>()
+    .HashPassword(new ApplicationUser(), "Admin@123");
 
 Console.WriteLine(hash);
 

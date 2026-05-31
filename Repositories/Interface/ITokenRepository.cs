@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CodePulse.API.Models.Domain;
+using Microsoft.AspNetCore.Identity;
 
 namespace CodePulse.API.Repositories.Interface
 {
     public interface ITokenRepository
     {
-        string CreateJwtToken(IdentityUser user, List<string> roles);
+        string CreateJwtToken(ApplicationUser user, List<string> roles);
     }
 }
